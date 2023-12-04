@@ -1,6 +1,6 @@
 
-import { Layout, Menu, Dropdown, Avatar, Badge, Button, Drawer } from "antd";
-import { DownOutlined, UserOutlined, PlusCircleOutlined, ShoppingCartOutlined} from '@ant-design/icons';
+import { Layout, Dropdown } from "antd";
+import { DownOutlined, UserOutlined, ShoppingCartOutlined} from '@ant-design/icons';
 import Link from 'antd/es/typography/Link';
 import React, { useState, useEffect, useRef } from "react";
 import { jwtDecode } from "jwt-decode";
@@ -12,7 +12,7 @@ import CartApi from "../api/cartApi";
 import UserApi from "../api/userApi";
 import { useUserStore } from '../stores/user.store';
 
-const { Header, Footer } = Layout;
+const { Header } = Layout;
 
 export const NavBar: React.FC = () => {
     const [name, setName] = useState<string>(); 
@@ -48,6 +48,10 @@ export const NavBar: React.FC = () => {
 
      const toOrders = () => {
        navigate("../orders", { replace: true });
+  }  
+  
+    const toManagement = () => {
+      navigate("../management", { replace: true });
   }   
 
     const logOut = () => {
@@ -103,9 +107,12 @@ export const NavBar: React.FC = () => {
                     <Link onClick={toProducts} style={{ color: "white", fontSize: "18px" }}>{"Products"}</Link>
                   </h2>
                   <h2 style={{paddingLeft: "5%", marginTop: "2px"}}>
-                    <Link onClick={toOrders} style={{ color: "white", fontSize: "18px" }}>{"Orders"}</Link>
+                    <Link onClick={toOrders} style={{ color: "white", fontSize: "18px" }}>{"My Orders"}</Link>
                   </h2>
-                  <h2 style={{paddingLeft: "55%", marginTop: "8px"}}>
+                  <h2 style={{paddingLeft: "5%", marginTop: "2px"}}>
+                    <Link onClick={toManagement} style={{ color: "white", fontSize: "18px" }}>{"Management"}</Link>
+                  </h2>
+                  <h2 style={{paddingLeft: "45%", marginTop: "8px"}}>
                       <ShoppingCartOutlined onClick={toCart} style={{color: "white", fontSize: "48px"}}>
                       </ShoppingCartOutlined>
                   </h2>

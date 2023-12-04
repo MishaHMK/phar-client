@@ -11,7 +11,7 @@ export const EditProductModal: React.FC = () => {
 
     let productService = new ProductApi();
 
-    const [editForm] = useForm();
+    const [form] = Form.useForm();
     const [state, actions] = useUserStore();
 
     const token = AuthLocalStorage.getToken() as string;
@@ -22,7 +22,7 @@ export const EditProductModal: React.FC = () => {
 
     const updateModal = async () => {
             const result = await productService.getById(state.productToEditId);
-            editForm.setFieldsValue({
+            form.setFieldsValue({
                 id: state.productToEditId,
                 name: result.name,
                 description: result.description,
@@ -59,8 +59,7 @@ export const EditProductModal: React.FC = () => {
            onCancel={handleEditCancel}
            footer={null}>
               <h3 style = {{marginBottom: 10}}></h3>
-              <Form form = {editForm} onFinish={handleSubmit}>
-
+              <Form form = {form} onFinish={handleSubmit}>
                     <Form.Item
                         name="id">
                           <Input type="hidden"/>

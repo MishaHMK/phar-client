@@ -1,11 +1,12 @@
-import React, {ChangeEvent, FC, useState, useEffect} from 'react';
+import React from 'react';
 import AuthorizeApi from "../api/authorizeApi";
 import AuthLocalStorage from "../AuthLocalStorage";
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Form, Input } from 'antd';
 import Link from 'antd/es/typography/Link';
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
-import { LockOutlined, UserOutlined, MailOutlined} from '@ant-design/icons';
+import { LockOutlined, MailOutlined} from '@ant-design/icons';
+import { useForm } from "antd/lib/form/Form";
 
 export const Login: React.FC = () => {
     const [form] = Form.useForm();

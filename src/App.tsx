@@ -7,6 +7,8 @@ import { Register } from './components/Register';
 import { Login } from './components/Login';
 import { CartPage } from './components/Cart';
 import { OrderPage } from './components/OrdersPage';
+import { ManagementPage } from './components/ManagementPage';
+import  FooterContainer  from './components/Footer';
 
 function App() {
   return (
@@ -26,14 +28,18 @@ function App() {
     <div className="App">
     <BrowserRouter>
             <NavBar/>
+            <div className="content">
             <Routes>
                    <Route path="" element={<Login/>} />
                    <Route path="register" element={<Register/>} />
                    <Route path="products" element={<ProductPage/>} />
                    <Route path="orders" element={<OrderPage/>} />
                    <Route path="carts" element={<CartPage/>} />
-            </Routes>  
+                   <Route path="management" element={<ManagementPage/>} />
+            </Routes> 
+            </div>
     </BrowserRouter>
+    <FooterContainer/>
     </div>
 
 </ConfigProvider>
